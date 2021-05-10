@@ -1,3 +1,5 @@
+version: "2.0"
+
 intents:
   - greet
   - goodbye
@@ -6,6 +8,8 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  # - chitchat
+  - faq
 
 responses:
   utter_greet:
@@ -26,6 +30,21 @@ responses:
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+
+  utter_faq/ask_timings:
+  - text: "The restaurant opens at 7pm and closes at 10pm."
+
+  utter_faq/ask_days:
+  - text: "The restaurant is open each and every day."
+
+  utter_faq/ask_cancel_bookings:
+  - text: "To cancel a reservation, simply call us at +91 9876543210 and cancel your reservation."
+
+  utter_faq/ask_specials:
+  - text: "Our chef is a master of the Italian cuisine. Our core speciality is our pasta, which is renowned throughout the city."
+
+  # utter_chitchat/ask_name:
+  # - text: "My name is RASA restaurant bot."
 
 session_config:
   session_expiration_time: 60
