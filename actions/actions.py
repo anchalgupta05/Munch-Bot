@@ -16,7 +16,7 @@ from rasa_sdk.events import SlotSet, EventType
 import datetime
 
 class ActionRestaurantForm(Action):
-    def name(self) -> Text:
+    def name(self):
         return "user_details_form"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict) -> List[EventType]:
@@ -29,17 +29,17 @@ class ActionRestaurantForm(Action):
         return [SlotSet("requested_slot", None)]
 
 class ValidateForm(FormValidationAction):
-    def name(self) -> Text:
+    def name(self):
         return "validate_user_details_form"
 
-    def checkInt(self, s):
-        try: 
-            int(s)
-            return True
-        except ValueError:
-            return False
+    # def checkInt(self, s):
+    #     try: 
+    #         int(s)
+    #         return True
+    #     except ValueError:
+    #         return False
 
-    def validate_number(self, slot_value: any, dispatcher: CollectingDispatcher, tracker: Tracker, domain: "DomainDict") -> Dict[Text, Any]:
+    def validate_number(self, slot_value: Text, dispatcher: CollectingDispatcher, tracker: Tracker, domain: "DomainDict") -> Dict[Text, Any]:
         # check_float = isinstance(float(slot_value), float)
         # if float(slot_value) != int(slot_value):
         if type(slot_value) == type(5):
@@ -96,4 +96,14 @@ class ActionSubmit(Action):
 
     def run(self, dispatcher, tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
         dispatcher.utter_message(template="utter_reserved_thanks", Seats=tracker.get_slot("number"), Section=tracker.get_slot("section"), Time=tracker.get_slot("time"))
+        # c=0
+        # t=["number", "section", "time"]
+        # for slot_name in t:
+        # if tracker.slots.get("number") is not None and tracker.slots.get("time") is not None and tracker.slots.get("section") is not None:
+                # c = c+1
+                # print(c)
+        # if c==3:
+            # SlotSet("number", None)
+            # SlotSet("time", None)
+            # SlotSet("section", None)
 

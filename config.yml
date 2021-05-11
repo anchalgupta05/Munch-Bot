@@ -84,7 +84,7 @@ pipeline:
     # locale: "de_DE"
     # if not set the default timezone of Duckling is going to be used
     # needed to calculate dates from relative expressions like "tomorrow"
-    timezone: "Asia/Mumbai"
+    timezone: "Asia/Kolkata"
 
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/

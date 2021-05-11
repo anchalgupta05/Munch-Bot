@@ -95,7 +95,15 @@ responses:
   - text: "How many seats would you like to reserve?"
 
   utter_ask_section:
-  - text: "Which section would you like to book? We have AC/Non-AC available."
+  - text: "Which section would you like to book?"
+    buttons:
+      - title: "AC"
+        # payload: /reserve_all_three{}
+        payload: /reserve_section{{"section":"AC"}}
+          # payload: '/bot_functions'
+      - title: "NON-AC"
+        payload: /reserve_section{{"section":"NON-AC"}}
+  # We have AC/Non-AC available."
 
   utter_ask_time:
   - text: "When would you like to book a reservation?"
