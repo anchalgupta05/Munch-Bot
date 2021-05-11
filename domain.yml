@@ -8,8 +8,56 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
-  # - chitchat
   - faq
+  - reserve_table
+  - reserve_seats:
+      use_entities:
+        - seats
+      ignore_entities:
+        - time
+  - reserve_section:
+      use_entities:
+        - section
+  - reserve_time:
+      use_entities:
+        - time
+      ignore_entities:
+        - seats
+        - section
+  - reserve_all_three:
+      use_entities:
+        - seats
+        - section
+        - time
+
+entities:
+  - seats
+  - section
+  - time
+
+slots:
+  seats:
+    type: text
+  section:
+    type: text
+  time:
+    type: text
+
+actions:
+  - action_submit
+  - validate_user_details_form
+
+forms:
+  user_details_form:
+    seats:
+      - type: from_entity
+        entity: seats
+    section:
+      - type: from_entity
+        entity: section
+    time:
+      - type: from_entity
+        entity: time
 
 responses:
   utter_greet:
@@ -43,8 +91,20 @@ responses:
   utter_faq/ask_specials:
   - text: "Our chef is a master of the Italian cuisine. Our core speciality is our pasta, which is renowned throughout the city."
 
-  # utter_chitchat/ask_name:
-  # - text: "My name is RASA restaurant bot."
+  utter_ask_seats:
+  - text: "How many seats would you like to reserve?"
+
+  utter_ask_section:
+  - text: "Which section would you like to book? We have AC/Non-AC available."
+
+  utter_ask_time:
+  - text: "When would you like to book a reservation?"
+
+  utter_reserved_thanks:
+  - text: "You have reserved {Seats} seats in our {Section} section for {Time}. Thanks!"
+
+  utter_incorrect_time:
+  - text: "We are not open at that time. We are only open from 7pm to 10pm."
 
 session_config:
   session_expiration_time: 60

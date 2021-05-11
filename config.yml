@@ -10,6 +10,9 @@ pipeline:
   - name: RegexFeaturizer
   - name: LexicalSyntacticFeaturizer
   - name: CountVectorsFeaturizer
+  # - name: "EmbeddingIntentClassifier"
+  #   intent_tokenization_flag: true
+  #   intent_split_symbol: "+"
   - name: CountVectorsFeaturizer
     analyzer: char_wb
     min_ngram: 1

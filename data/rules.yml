@@ -21,3 +21,26 @@ rules:
 #   steps:
 #   - intent: chitchat
 #   - action: utter_chitchat
+
+- rule: Activate form
+  steps:
+  - or:
+    - intent: reserve_table
+    - intent: reserve_seats
+    - intent: reserve_section
+    - intent: reserve_time
+    - intent: reserve_all_three
+  # - action: utter_ask_seats
+  - action: user_details_form
+  - active_loop: user_details_form
+
+- rule: Submit form
+  condition: # condition that the form is active
+  - active_loop: user_details_form
+  steps:
+  - action: user_details_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null 
+  - action: action_submit
+

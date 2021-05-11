@@ -28,3 +28,25 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+
+# - story: reserve a table
+#   steps:
+#   - intent: reserve_table
+#   - action: utter_reserve_table
+#   - intent: reserve_seats
+#     entities:
+#     - seats: "4"
+#   - slot_was_set:
+#       - seats: "4"
+#   - action: utter_reserve_seats
+#   - intent: reserve_section
+#     entities:
+#     - section: {"AC","Non-AC"}
+#   - slot_was_set:
+#       - section: {"AC","Non-AC"}
+#   - action: utter_reserve_section
+#   - intent: reserve_time
+#     entities:
+#     - time: "7 PM"
+#   - slot_was_set:
+#       - time: "7 PM"
