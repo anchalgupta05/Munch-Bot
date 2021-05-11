@@ -32,23 +32,24 @@ class ValidateForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_user_details_form"
 
-    # def checkInt(self, s):
-    #     try: 
-    #         int(s)
-    #         return True
-    #     except ValueError:
-    #         return False
+    def checkInt(self, s):
+        try: 
+            int(s)
+            return True
+        except ValueError:
+            return False
 
     def validate_number(self, slot_value: any, dispatcher: CollectingDispatcher, tracker: Tracker, domain: "DomainDict") -> Dict[Text, Any]:
         # check_float = isinstance(float(slot_value), float)
         # if float(slot_value) != int(slot_value):
-        # if self.checkInt(slot_value):
+        if type(slot_value) == type(5):
+            return {"number": slot_value}
         #     if int(slot_value) > 0:
         #         return {"number": slot_value}
         #     # if check_float != int(slot_value):
-        # dispatcher.utter_message("You have input erroneous number of seats. Please give valid number of seats!")
-        # return {"number": None}
-        return {"number": slot_value}
+        dispatcher.utter_message("You have input erroneous number of seats. Please give valid number of seats!")
+        return {"number": None}
+        # return {"number": slot_value}
 
     def validate_section(self, slot_value: Any, dispatcher: CollectingDispatcher, tracker: Tracker, domain: "DomainDict") -> Dict[Text, Any]:
         slot_value = slot_value.upper()
