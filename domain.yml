@@ -12,7 +12,7 @@ intents:
   - reserve_table
   - reserve_seats:
       use_entities:
-        - seats
+        - number
       ignore_entities:
         - time
   - reserve_section:
@@ -22,26 +22,26 @@ intents:
       use_entities:
         - time
       ignore_entities:
-        - seats
+        - number
         - section
   - reserve_all_three:
       use_entities:
-        - seats
+        - number
         - section
         - time
 
 entities:
-  - seats
+  - number
   - section
   - time
 
 slots:
-  seats:
+  number:
     type: text
   section:
-    type: text
+    type: any
   time:
-    type: text
+    type: any
 
 actions:
   - action_submit
@@ -49,9 +49,9 @@ actions:
 
 forms:
   user_details_form:
-    seats:
+    number:
       - type: from_entity
-        entity: seats
+        entity: number
     section:
       - type: from_entity
         entity: section
@@ -61,7 +61,7 @@ forms:
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+  - text: "Hey! I am a restaurant bot. How can I help you?"
 
   utter_cheer_up:
   - text: "Here is something to cheer you up:"
@@ -77,7 +77,7 @@ responses:
   - text: "Bye"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  - text: "I am a restaurant bot, powered by Rasa."
 
   utter_faq/ask_timings:
   - text: "The restaurant opens at 7pm and closes at 10pm."
@@ -91,7 +91,7 @@ responses:
   utter_faq/ask_specials:
   - text: "Our chef is a master of the Italian cuisine. Our core speciality is our pasta, which is renowned throughout the city."
 
-  utter_ask_seats:
+  utter_ask_number:
   - text: "How many seats would you like to reserve?"
 
   utter_ask_section:

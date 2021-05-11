@@ -29,6 +29,7 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
+
 # - story: reserve a table
 #   steps:
 #   - intent: reserve_table
